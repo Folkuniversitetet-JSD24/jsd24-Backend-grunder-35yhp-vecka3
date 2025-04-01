@@ -1,0 +1,287 @@
+🚀 Lektion: API-designprinciper och RESTful Best Practices
+
+💡 Lektionsmål:
+Efter lektionen ska studenterna:
+
+Förstå grundläggande designprinciper för RESTful API:er.
+
+Implementera ett API som följer REST-principer.
+
+Få insikt i hur man designar API:er som är robusta och skalbara.
+
+Dokumentera API:et med hjälp av Swagger.
+------------------------------------------------------------
+📝 Lektionsplanering (3 timmar)
+
+Tid	Moment
+00:00–00:10	Introduktion och agenda
+00:10–00:40	✅ PowerPoint & teori
+00:40–01:40	✅ Code-Along - Bygga ett RESTful API
+01:40–02:20	✅ Code-Along - Implementera Swagger
+02:20–03:00	✅ Självständiga övningar och reflektion
+
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+📊 PowerPoint Slides (20 slides)
+
+🗣️ Talarmanus för PowerPoint-presentationen
+
+Slide 1: API-arkitektur
+🗣️ Talarmanus: "Hej allihopa! Idag ska vi prata om API-designprinciper och RESTful best practices. Vi börjar med att titta på olika typer av API-arkitekturer. Det finns flera olika, men de mest populära är:
+
+SOAP: En äldre teknik med XML-baserad kommunikation.
+
+GraphQL: Ger klienten möjlighet att specificera exakt vilken data som behövs.
+
+JSON-RPC och XML-RPC: Fokuserar på att köra procedurer via HTTP.
+
+REST: En av de mest använda arkitekturerna, där data är plattformsoberoende och använder HTTP-metoder.
+
+Det finns för- och nackdelar med alla dessa, men idag fokuserar vi på REST eftersom det är den vanligaste arkitekturen i moderna webbtjänster."
+-------------------------------------
+Slide 2: REST API
+🗣️ Talarmanus: "REST är en arkitekturstil som bygger på stateless-kommunikation via HTTP. Det betyder att varje förfrågan är fristående och innehåller all information som behövs. REST är populärt eftersom det är enkelt, plattformsoberoende och väl anpassat för moderna webbapplikationer."
+
+-------------------------------------
+Slide 3: REST API - Fördelar
+🗣️ Talarmanus: "En stor fördel med REST är att det erbjuder en tydlig separation mellan frontend och backend. Backend kan koncentrera sig på att leverera data medan frontend hanterar presentationen. Dessutom är REST plattformsoberoende, vilket innebär att samma API kan användas av både mobilappar och webbappar."
+
+-------------------------------------
+Slide 4: Stateless
+🗣️ Talarmanus:
+"I REST är varje förfrågan stateless, vilket betyder att servern inte håller något minne av tidigare anrop.
+Det innebär att varje förfrågan innehåller all information som behövs för att servern ska kunna behandla den.
+Detta gör systemet mycket skalbart, eftersom varje förfrågan är oberoende av tidigare interaktioner.
+Nackdelen är att vi ibland behöver skicka med lite mer data i varje anrop för att hålla reda på sammanhanget."
+
+-------------------------------------
+Slide 5: Uniform Design
+🗣️ Talarmanus:
+"REST har en enhetlig design, vilket innebär att alla resurser hanteras på samma sätt.
+En GET- eller POST-anrop ser alltid likadant ut, oavsett vilken resurs det handlar om.
+Det gör att utvecklare enkelt kan förstå hur nya resurser fungerar baserat på tidigare erfarenheter."
+
+-------------------------------------
+Slide 6: Resursdesign
+🗣️ Talarmanus:
+"En resurs i REST ska aldrig vara mer komplicerad än nödvändigt.
+Vi använder en tydlig struktur som till exempel:
+
+/collections/documents/users
+
+En resurs är något som kan identifieras och manipuleras via en URL.
+Vi eftersträvar enkelhet och tydlighet för att göra API:et lättanvänt."
+
+-------------------------------------
+Slide 7: Självförklarande Resurser
+🗣️ Talarmanus:
+"Varje resurs ska vara självförklarande och ha en tydlig benämning.
+Exempel:
+
+/users är självklart att det handlar om användare.
+
+Undvik namn som /people_in_general eftersom det är otydligt.
+
+En tydlig URL-struktur gör API:et lättare att använda och förstå."
+
+-------------------------------------
+Slide 8: Tydliga och Förklarande Responser
+🗣️ Talarmanus:
+"En REST-respons ska vara tydlig och förklarande.
+
+Istället för att bara svara med 'ERROR!', bör vi ge mer information.
+
+Ett exempel på en bra respons är:
+Oops, it seems your credentials were wrong.
+
+Genom att ge användaren tydliga felmeddelanden gör vi API:et mer användarvänligt."
+
+-------------------------------------
+Slide 9: Pluralform på Resurser
+🗣️ Talarmanus:
+"Alla resursnamn i REST ska vara i pluralform.
+Exempel:
+
+/customers för kunder
+
+/tickets för biljetter
+
+/users för användare
+
+Detta är en best practice eftersom vi ofta arbetar med flera resurser samtidigt."
+
+-------------------------------------
+Slide 10: Metoder
+🗣️ Talarmanus: "REST använder sig av standardiserade HTTP-metoder för att hantera resurser. Här är de vanligaste:
+
+GET: Hämta data.
+
+POST: Skapa en ny resurs.
+
+PUT: Uppdatera en resurs.
+
+PATCH: Delvis uppdatera en resurs.
+
+DELETE: Ta bort en resurs."
+
+-------------------------------------
+Slide 11: Exempel på REST Metoder
+🗣️ Talarmanus:
+"REST-arkitekturen använder standardiserade HTTP-metoder för att hantera resurser:
+
+GET /customers/ hämtar alla kunder.
+
+GET /customers/1 hämtar en specifik kund.
+
+POST /customers skapar en ny kund.
+
+Genom att följa denna standard blir vårt API mer intuitivt och lättanvänt."
+
+-------------------------------------
+Slide 12: Modulstrukturering
+🗣️ Talarmanus:
+"För att hålla API:et strukturerat och skalbart delar vi upp olika resurser i separata moduler:
+
+customers.js hanterar kundresurser.
+
+orders.js hanterar beställningsresurser.
+
+Detta gör koden mer överskådlig och underlättar underhåll."
+
+-------------------------------------
+Slide 13: API Kartläggning
+🗣️ Talarmanus:
+"Innan vi bygger vårt API är det viktigt att göra en kartläggning:
+
+Vilka aktörer kommer att använda API:et?
+
+Vilka metoder behöver de?
+
+Hur ska datan se ut?
+
+Genom att planera på detta sätt säkerställer vi att vårt API möter de krav som ställs."
+
+-------------------------------------
+Slide 14: Parter för en Restaurang-App
+🗣️ Talarmanus:
+"Vi kan identifiera flera parter som kommer att använda API:et:
+
+Kunden: Beställer mat och ser status.
+
+Drönaren: Levererar maten och uppdaterar orderstatus.
+
+Pizzerian: Hanterar beställningar och uppdateringar."
+
+-------------------------------------
+Slide 15: Funktionalitet per Part
+🗣️ Talarmanus:
+"För varje part i systemet specificerar vi vad de ska kunna göra:
+
+Kunden: Se meny, skapa order, betala, se status.
+
+Drönaren: Uppdatera orderstatus.
+
+Pizzerian: Se och uppdatera beställningar."
+
+-------------------------------------
+Slide 16: Entiteter
+🗣️ Talarmanus:
+"Entiteter är objekt som representerar data i vårt system.
+
+För kunder: Logga in, se meny, skapa order, se status.
+
+För drönare: Uppdatera orderstatus.
+
+För pizzerian: Hantera beställningar."
+
+-------------------------------------
+Slide 17: Resurser
+🗣️ Talarmanus:
+"En resurs gör entiteter tillgängliga via en URL.
+
+/users hanterar inloggning och användarinformation.
+
+/menus tillhandahåller menyn.
+
+/orders hanterar beställningar."
+
+-------------------------------------
+Slide 18: Metoder per Resurs
+🗣️ Talarmanus:
+"Vi behöver definiera vilka metoder som är relevanta för varje resurs:
+
+POST /users för att logga in.
+
+GET /menus för att hämta menyn.
+
+POST /orders för att skapa en order."
+
+-------------------------------------
+Slide 19: Dokumentation
+🗣️ Talarmanus: "Att dokumentera sina API:er är ett måste för att säkerställa att utvecklare och användare förstår hur API:et ska användas. Ett populärt verktyg för detta är Swagger, som genererar interaktiv dokumentation direkt från din kod."
+
+-------------------------------------
+Slide 20: Middleware - CORS
+🗣️ Talarmanus:
+"För att vårt API ska vara tillgängligt från olika domäner använder vi CORS.
+Det innebär att vi explicit tillåter vissa domäner att göra förfrågningar till vårt API.
+För att hantera detta använder vi biblioteket cors med Express:
+
+import cors from 'cors';
+app.use(cors());
+CORS är avgörande när vi bygger webbapplikationer som kommunicerar med en backend.
+
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+💻 Code-Along: Strukturera API enligt REST-principer
+
+🗣️ Talarmanus - Code-Along Start:
+"Hej alla! Nu ska vi bygga ett RESTful API som följer bästa praxis. Vi kommer att använda Express och skapa en struktur som är lätt att skala och underhålla."
+
+-------------------------------------------------
+🏗️ Projektstruktur:
+
+├── index.js            # Huvudfil för servern
+├── package.json        # Projektkonfiguration
+├── routes/             # Mapp för alla router-filer
+│   └── users.js         # Router-fil för användare
+
+-------------------------------------------------
+🔧 1. Installera nödvändiga paket
+
+npm init -y
+npm install express swagger-jsdoc swagger-ui-express
+
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+📝 Skapa huvudfilen: index.js
+
+Genomför den koden.
+-------------------------------------------------
+
+📝 Skapa användarrouter: routes/users.js
+
+Genomför den koden.
+-------------------------------------------------
+
+📝 Testa i webbläsaren
+
+node index.js
+
+Besök Swagger-dokumentationen:
+
+http://localhost:3000/api-docs
+
+
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+📝 Sammanfattning (10 min)
+"Vi har idag byggt ett RESTful API enligt best practices och dokumenterat det med Swagger. Genom att strukturera vårt API på detta sätt blir det lättare att både underhålla och använda. Kom ihåg att alltid tänka på tydlighet och dokumentation när ni bygger era egna API:er!"
+-------------------------------------------------
+-------------------------------------------------
+-------------------------------------------------
+🗣️ Talarmanus - Självständig Övningar:
