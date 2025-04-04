@@ -1,0 +1,17 @@
+{
+  "name": "jsd24-backend-grunder-35yhp-vecka3",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "* ✅ Vad är Middleware?\r * ✅ Varför använda Middleware?\r * ✅ Middleware för logging, felhantering och validering\r * ✅ Express Router (strukturering av routes)\r * ✅ API-designprinciper\r    - Hur namnger vi endpoints korrekt? \r    - RESTful best practices\r * ✅ Swagger för dokumentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "joi": "^17.13.3"
+  }
+}

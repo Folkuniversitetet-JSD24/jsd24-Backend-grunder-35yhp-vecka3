@@ -1,0 +1,33 @@
+✍️ Självständig Övningar
+
+🟢 Lätta Övningar
+
+1. Lägg till ett nytt fält i Joi-schemat, t.ex. phone (valfritt eller required).
+
+2. Skapa en GET-route som returnerar en statisk användare, t.ex. GET /users/1.
+
+3. Skapa en GET-route som returnerar en lista av mock-användare där varje användare valideras med ett Joi-schema innan den skickas som svar.
+
+--------------------------------------
+🟠 Medelsvåra Övningar
+
+1. Skapa en PUT /users/:id route som återanvänder Joi-schemat och returnerar ett uppdaterat objekt.
+
+2. Lägg till en error-middleware som skiljer på 404 (Not Found) och valideringsfel.
+
+3. Skapa en DELETE /users/:id route där du först kontrollerar att användaren existerar (mock).
+
+--------------------------------------
+🔴 Svåra Övningar
+
+1. Dela upp projektet i fullständig MVC-struktur med separata controllers, routes och validering.
+
+2. Implementera en middleware som kontrollerar om ett fält (t.ex. role) har rätt värde (admin/user).
+
+3. Skapa en POST /login endpoint som validerar e-post och lösenord med Joi och returnerar en fejkad JWT-token (mockat svar).
+
+4. Skapa en POST /products endpoint där du validerar produktdata med Joi och sparar produkten till en mock-array.
+
+5. Implementera validering för ett komplext objekt, t.ex. en användare med adresser som är en array av objekt.
+
+6. Skapa en PATCH /users/:id route där endast vissa fält (t.ex. email eller age) kan uppdateras, och validera datan med ett Joi-subschema.
